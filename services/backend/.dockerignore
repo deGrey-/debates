@@ -1,0 +1,17 @@
+# Ignore binaries
+#/backend
+
+# Ignore Go build artifacts
+*.exe
+*.out
+*.test
+
+# Ignore dependencies
+vendor/
+#go.sum
+go.work
+
+# Ignore config & env files
+.env
+*.log
+

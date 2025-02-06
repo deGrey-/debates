@@ -1,0 +1,22 @@
+# General OS files
+.DS_Store
+Thumbs.db
+
+# Go-related
+/services/backend/vendor/
+#/services/backend/go.sum
+
+# Node.js (Frontend)
+/services/frontend/node_modules/
+/services/frontend/build/
+/services/frontend/dist/
+
+# Docker
+#**/docker-compose.override.yml
+#**/.dockerignore
+
+# Logs & temp files
+*.log
+*.swp
+*.tmp
+.env

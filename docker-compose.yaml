@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./services/backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASSWORD=secret
+      - DB_NAME=debate_db
+    networks:
+      - debate_network
+
+  frontend:
+    build: ./services/frontend/debate-ui/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - debate_network
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: debate_db
+    ports:
+      - "5432:5432"
+    networks:
+      - debate_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+networks:
+  debate_network:
+
+volumes:
+  postgres_data:
